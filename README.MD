@@ -1,0 +1,2 @@
+# Converter
+It's an simple application written in C# with WPF that allow user to convert between four different numeral systems: binary, octagonal, decimal and hexadecimal. It was created as simple example for learning basics of WPF.
