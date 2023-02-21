@@ -27,13 +27,29 @@ namespace CalculatorBINDEC
 
         private void ConvertClick(object sender, RoutedEventArgs e)
         {
+            Converter converter = new Converter(textInput.Text);
+
             if(radioDECBIN.IsChecked== true)
             {
-                textOutput.Text = Converter.ToBinary(textInput.Text);
+                if (!converter.ToSystem(2))
+                {
+                    textOutput.Text = "błąd";
+                }
+                else
+                {
+                    textOutput.Text = converter.Value;
+                }
             }
             else
             {
-                textOutput.Text=Converter.ToDecimal(textInput.Text);
+                if (!converter.ToDecimal(2))
+                {
+                    textOutput.Text = "błąd";
+                }
+                else
+                {
+                    textOutput.Text = converter.Value;
+                }
             }
 
         }

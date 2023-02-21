@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Permissions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,13 +9,48 @@ namespace CalculatorBINDEC
 {
     internal class Converter
     {
-        public static string ToDecimal(string input)
+        private string value;
+
+        public Converter(string value)
         {
-            return Convert.ToInt64(input, 2).ToString();
+           this.value = value;
         }
-        public static string ToBinary(string input)
+
+        public string Value { get => value; }
+
+        public bool ToDecimal(int fromBase)
         {
-            return Convert.ToString(Convert.ToInt64(input), 2);
+            if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
+            {
+                return false;
+            }
+            
+            try
+            {
+                value = Convert.ToInt64(value, fromBase).ToString();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        public bool ToSystem(int fromBase)
+        {
+            if (fromBase != 2 && fromBase != 8 && fromBase != 10 && fromBase != 16)
+            {
+                return false;
+            }
+
+            try
+            {
+                value = Convert.ToString(Convert.ToInt64(value), fromBase);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
