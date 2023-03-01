@@ -27,15 +27,65 @@ namespace CalculatorBINDEC
 
         private void ConvertClick(object sender, RoutedEventArgs e)
         {
-            if(radioDECBIN.IsChecked== true)
+            Converter converter = new Converter(textInput.Text);
+
+            var inputSystem = GetInputSystem();
+            var outputSystem = GetOutputSystem();
+
+            if (inputSystem == 10 && converter.ToSystem(outputSystem))
             {
-                textOutput.Text = Converter.ToBinary(textInput.Text);
+                textOutput.Text= converter.Value;
+            }
+
+            if (outputSystem == 10 && converter.ToDecimal(inputSystem))
+            {
+                textOutput.Text = converter.Value;
+            }
+
+            if (converter.ToDecimal(inputSystem) && converter.ToSystem(outputSystem))
+            {
+                textOutput.Text = converter.Value;
+            }
+
+
+        }
+        private int GetInputSystem()
+        {
+            if(radioInputBIN.IsChecked == true) 
+            {
+                return 2;
+            }
+            else if (radioInputOCT.IsChecked == true)
+            {
+                return 8;
+            }
+            else if (radioInputDEC.IsChecked == true)
+            {
+                return 10;
             }
             else
             {
-                textOutput.Text=Converter.ToDecimal(textInput.Text);
+                return 16;
             }
-
+        }
+        private int GetOutputSystem()
+        {
+            if (radioOutputBIN.IsChecked == true)
+            {
+                return 2;
+            }
+            else if (radioOutputOCT.IsChecked == true)
+            {
+                return 8;
+            }
+            else if (radioOutputDEC.IsChecked == true)
+            {
+                return 10;
+            }
+            else
+            {
+                return 16;
+            }
         }
     }
 }
