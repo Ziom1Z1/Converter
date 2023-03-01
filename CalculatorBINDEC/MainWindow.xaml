@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CalculatorBINDEC"
         mc:Ignorable="d"
-        Title="Convert" Height="200" Width="400" ResizeMode="CanMinimize">
+        Title="Convert" Height="250" Width="400" ResizeMode="CanMinimize">
     <Grid Margin="20,10,20,10">
         <Grid.Resources>
             <Style TargetType="{x:Type TextBox}">
@@ -19,13 +19,23 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
         </Grid.RowDefinitions>
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
+            <RadioButton IsChecked="True" x:Name="radioInputBIN">BIN</RadioButton>
+            <RadioButton x:Name="radioInputOCT">OCT</RadioButton>
+            <RadioButton x:Name="radioInputDEC">DEC</RadioButton>
+            <RadioButton x:Name="radioInputHEX">HEX</RadioButton>
+        </StackPanel>
 
-        <RadioButton Grid.Column="0" Grid.Row="0" IsChecked="True" x:Name="radioDECBIN">DEC->BIN</RadioButton>
-        <RadioButton Grid.Column="1" Grid.Row="0" HorizontalAlignment="Right" x:Name="radioBINDEC">BIN->DEC</RadioButton>
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+            <RadioButton x:Name="radioOutputBIN">BIN</RadioButton>
+            <RadioButton IsChecked="True" x:Name="radioOutputOCT">OCT</RadioButton>
+            <RadioButton x:Name="radioOutputDEC">DEC</RadioButton>
+            <RadioButton x:Name="radioOutputHEX">HEX</RadioButton>
+        </StackPanel>
 
         <TextBox Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" x:Name="textInput"></TextBox>
         <TextBox Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" x:Name="textOutput"></TextBox>
