@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CalculatorBINDEC
 {
-    internal class Converter
+    public class Converter
     {
         private string value;
 
@@ -15,8 +15,12 @@ namespace CalculatorBINDEC
         {
            this.value = value;
         }
+        public Converter()
+        {
+            value = "";
+        }
 
-        public string Value { get => value; }
+        public string Value { get => value; set => this.value = value;}
 
         public bool ToDecimal(int fromBase)
         {
